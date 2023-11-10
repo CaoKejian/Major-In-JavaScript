@@ -38,4 +38,3 @@ const obj3 = deepClone(obj1)
 obj3.b.d = 5
 console.log('更改后的ob1->', obj1)
 console.log('更改后的ob3->', obj3)
-

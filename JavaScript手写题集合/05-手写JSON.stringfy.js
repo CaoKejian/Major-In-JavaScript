@@ -1,22 +1,21 @@
 function customStringfy(temp) {
-  if(typeof temp === 'number' || typeof temp === 'boolean' || typeof temp === 'null' ){
+  if(typeof temp === 'number' || typeof temp === 'null' ||typeof temp === 'undefined' ||typeof temp === 'boolean'){
     return temp.toString()
   }else if(typeof temp === 'string'){
     return "'" + temp + "'"
   }
 
   if(Array.isArray(temp)){
-    const x = temp.map(item => customStringfy(item))
-    return '[' + x.join(',') + ']'
+    const x = temp.map(customStringfy)
+    return "[" + x.join(',') + "]"
   }
 
-  if(typeof temp === 'object'){
-    const keysArr = Object.keys(temp)
-    const iterArr = keysArr.map(item => {
-      const value = customStringfy(temp[item])
-      return '"' + item + ':' + value + '"'
+  if(typeof temp === 'object' && temp !== null) {
+    const keys = Object.keys(temp)
+    const x = keys.map(item => {
+      return '"' + item + '"' + ':' + customStringfy(temp[item])
     })
-    return "{" + iterArr.join(',') + "}"
+    return "{" + x.join(',') + "}"
   }
 }
 
@@ -28,3 +27,4 @@ console.log(Robj)
 const x = 123
 const Rx = customStringfy(x)
 console.log(Rx)
+console.log(customStringfy({name: 'ckj', age: 123}))
