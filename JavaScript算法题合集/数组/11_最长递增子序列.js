@@ -19,24 +19,3 @@ function fn(arr) {
   return result
 }
 console.log(fn([1, 3, 0, 6])); // [1, 3, 6]
-
-function fn1(arr) {
-  const dp = new Array(arr.length).fill(1)
-
-  for (let i = 1; i < arr.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (arr[i] > arr[j] && dp[j] + 1 > dp[i]) {
-        dp[i] = dp[j] + 1
-      }
-    }
-  }
-  let max = Math.max(...dp), result = []
-  for (let i = arr.length; max > 0; i--) {
-    if (max === dp[i]) {
-      result.unshift(arr[i])
-      max--
-    }
-  }
-  return result
-}
-console.log(fn1([1, 3, 0, 6])); // [1, 3, 6]
