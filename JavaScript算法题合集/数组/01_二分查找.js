@@ -4,7 +4,7 @@ const target = 4
 function midFind(arr, target) {
   let mid, left = 0, right = arr.length - 1
   while (left < right) {
-    let mid = Math.floor(arr[ (left + right) / 2 ])
+    mid = Math.floor(arr[ (left + right) / 2 ])
     if(arr[mid] < target){
       left = mid + 1
     }else if(arr[mid] > target) {
